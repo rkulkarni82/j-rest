@@ -95,5 +95,5 @@ If you know typing, it should get over under a minute, now compare this with the
 
       JREST_KEY : Definition key
       SESSION_KEY : Session key received from login HTTP request
-      JSON_DATA : Optional data to supply actual values to the query corresponding to the JREST_KEY as shown in the login example. (Refer Pt. 15) 
+      JSON_DATA : Optional data to supply actual values to the query corresponding to the JREST_KEY as shown in the login example. (Refer Pt. 14) 
 
