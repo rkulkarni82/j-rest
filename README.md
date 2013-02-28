@@ -24,15 +24,14 @@ If you know typing, it should get over under a minute, now compare this with the
 <b>5 Minutes Guide</b>
 
 <para>
-1. Download the compressed war or source tarball <br>
+1. Download the source code <br>
 2. Stop your web server now, if you are running one! we will start it back in 5 minutes <br>
-3. Untar/Unzip to your favorite directory (if source code) otherwise place the war file under webapp directory of web server. <br>
-4. If you intent to run from the source, you must have Maven already set <br>
-5. To generate the war file from source code, execute mvn install. <br>
-6. Set an environment variable by the name JREST_DEFINITION_PATH to any of your favorite path. Depending on your platform you may need to reopen/restart the shell/command prompt. <br>
-7. To work with Oracle and Sql Server you need to have their jdbc drivers installed and accessible on CLASSPATH. <br>
-8. Make sure you have/create a table called User on your database, with username and password columns present in them. <br>
-9. Now move into JREST_DEFINITION_PATH, and open a new file jrest.json in edit mode, and fill in the details given below (replace the values accordingly). <br>
+3. To compile the source, you must have Maven already installed along with Java <br>
+4. To generate the war file from source code, go to the j-rest folder and execute mvn install. This should generate the war file which you need to place it under the webapps folder of your webserver. <br>
+5. Set an environment variable by the name <b>JREST_DEFINITION_PATH</b> to any of your favorite path. Depending on your platform you may need to reopen/restart the shell/command prompt. <br>
+6. To work with Oracle and Sql Server you need to have their jdbc drivers installed and accessible on <b>CLASSPATH</b>. <br>
+7. Make sure you have/create a table called User on your database, with username and password columns present in them. <br>
+8. Now move into JREST_DEFINITION_PATH, and open a new file jrest.json in edit mode, and fill in the details given below (replace the values accordingly). <br>
 
     {
         "AUTH":{
@@ -53,7 +52,7 @@ If you know typing, it should get over under a minute, now compare this with the
     }
 
 <para>
-10. Now open another file users.json in edit mode in JREST_DEFINITION_PATH and put the contents given below <br>
+9. Now open another file users.json in edit mode in JREST_DEFINITION_PATH and put the contents given below <br>
 
     {
   
@@ -66,8 +65,8 @@ If you know typing, it should get over under a minute, now compare this with the
 
     
 <para> 
-11. Now start your web server or execute mvn jetty:run on the shell prompt (you must be inside the j-rest directory where you have uncompressed the JRest source) <br>
-12. Observe the output of web server; your definition files must have loaded successfully. Your output should be something similar to following
+10. Now start your web server or execute mvn jetty:run on the shell prompt (you must be inside the j-rest directory where you have uncompressed the JRest source) <br>
+11. Observe the output of web server; your definition files must have loaded successfully. Your output should be something similar to following
 
 
       2013-02-10 16:23:00,705 [Thread-6] DEBUG org.aprilis.jrest.compile.Compile - Default role value [[-3022]] added to JRest Key [UA4] <br>
@@ -86,12 +85,12 @@ If you know typing, it should get over under a minute, now compare this with the
         class org.aprilis.jrest.auth.Authentication <br>
 
 <para>
-13. Make sure you have Postman plugin for Google Chrome or REST Client extension for Firefox; this is needed to test the REST service. <br>
-14. Create a HTTP POST request with the URL http://localhost:8080/jrest/login and pass the authentication details in Header params with JSON_DATA as the key and {"1":"d", "2":"d"} as the value. <br>
-15. Pay attention to the header parameters; we have placed {"1":"d", "2":"d"} as JSON_DATA for the call. 1 and 2 in the actual JSON data represents the positions on the Query given as part of AUTH string ("Select -3022 From Darwin.User Where username = ? and password = PASSWORD(?);". The value "d" of key "1" is supplemented to username and "d" (another 'd') of key "2" is supplemented password of the SQL statement. <br>
-16. You should also get a session key of length 32 bytes as a reply to login; we need that key for every other call that we are going to make for JRest, keep it copied to some place.  <br>
-17. There you go! You have successfully interacted with your webserver using j-rest.  <br>
-18. On the same lines, execute other definitions. The information needed in case of definitions other than AUTH is that the HTTP request should contain the following information in the Header params <br>
+12. Make sure you have Postman plugin for Google Chrome or REST Client extension for Firefox; this is needed to test the REST service. <br>
+13. Create a HTTP POST request with the URL http://localhost:8080/jrest/login and pass the authentication details in Header params with JSON_DATA as the key and {"1":"d", "2":"d"} as the value. <br>
+14. Pay attention to the header parameters; we have placed {"1":"d", "2":"d"} as JSON_DATA for the call. 1 and 2 in the actual JSON data represents the positions on the Query given as part of AUTH string ("Select -3022 From Darwin.User Where username = ? and password = PASSWORD(?);". The value "d" of key "1" is supplemented to username and "d" (another 'd') of key "2" is supplemented password of the SQL statement. <br>
+15. You should also get a session key of length 32 bytes as a reply to login; we need that key for every other call that we are going to make for JRest, keep it copied to some place.  <br>
+16. There you go! You have successfully interacted with your webserver using j-rest.  <br>
+17. On the same lines, execute other definitions. The information needed in case of definitions other than AUTH is that the HTTP request should contain the following information in the Header params <br>
 
 
       JREST_KEY : Definition key
