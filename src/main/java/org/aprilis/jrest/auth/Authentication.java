@@ -179,7 +179,7 @@ public class Authentication {
      */
     @Path("logoff")
     @POST
-    public Response logoff(String sessionKey) {
+    public Response logoff(@HeaderParam(Constants.SESSION_KEY) String sessionKey) {
 	if (moSessionStore.isSystemInReadyState() == false) {
 	    mLogger.fatal(Exceptions.gsSystemInHaltState);
 
